@@ -9,6 +9,7 @@
             hide-details
             append-icon="search"
             label="Search apps"
+            v-model="searchValue"
           ></v-text-field>
         </v-card>
       </v-layout>
@@ -22,6 +23,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { STORE_MUTATIONS } from "./store";
 
 export default Vue.extend({
   name: "App",
@@ -29,5 +31,15 @@ export default Vue.extend({
   data: () => ({
     //
   }),
+  computed: {
+    searchValue: {
+      get() {
+        return this.$store.state.searchValue;
+      },
+      set(val) {
+        this.$store.commit(STORE_MUTATIONS.appBar.SET_SEARCH_VALUE, val);
+      }
+    }
+  }
 });
 </script>

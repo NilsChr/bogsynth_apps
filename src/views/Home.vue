@@ -1,16 +1,22 @@
 <template>
-  <v-container fluid>
-
+  <v-container>
+    <v-layout justify-center>
+      <v-flex xs8>
+        <apps />
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
 <script lang="ts">
-  import Vue from 'vue'
+import Apps from "@/components/Apps.vue";
+import Vue from "vue";
 
-  export default Vue.extend({
-    name: 'Home',
+export default Vue.extend({
+  name: "Home",
 
-    components: {
-    },
-  })
+  components: {
+    Apps,
+  },
+});
 </script>
