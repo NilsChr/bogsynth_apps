@@ -1,10 +1,13 @@
 <template>
-  <v-container>
-    <v-layout justify-center>
+  <v-container fill-height>
+    <!--
+    <v-layout justify-center fill-height>
       <v-flex xs8>
         <apps />
       </v-flex>
     </v-layout>
+    -->
+    <apps/>
   </v-container>
 </template>
 
