@@ -16,17 +16,20 @@
       transition="dialog-top-transition"
       v-if="viewedApp"
     >
+    <!--
       <viewed-app-small v-if="smallScreen" />
+      -->
+      <viewed-app-mobile />
     </v-dialog>
   </v-layout>
 </template>
 
 <script>
 import { STORE_MUTATIONS } from "@/store";
-import ViewedAppSmall from "./ViewedAppSmall.vue";
+import ViewedAppMobile from './ViewedApp.mobile.vue';
 
 export default {
-  components: { ViewedAppSmall },
+  components: { ViewedAppMobile },
   data() {
     return {
       apps: [
@@ -73,7 +76,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #grid-container {
   display: flex;
   flex-wrap: wrap;

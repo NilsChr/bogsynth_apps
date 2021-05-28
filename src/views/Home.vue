@@ -1,18 +1,14 @@
 <template>
-  <v-container fill-height>
-    <!--
-    <v-layout justify-center fill-height>
-      <v-flex xs8>
-        <apps />
-      </v-flex>
-    </v-layout>
-    -->
-    <apps/>
+  <v-container fill-height fluid>
+    <apps-mobile v-if="smallScreen"/>
+    <apps-desktop v-else />
   </v-container>
 </template>
 
 <script lang="ts">
 import Apps from "@/components/Apps.vue";
+import AppsDesktop from "@/components/desktop/Apps.desktop.vue";
+import AppsMobile from "@/components/mobile/Apps.mobile.vue";
 import Vue from "vue";
 
 export default Vue.extend({
@@ -20,6 +16,13 @@ export default Vue.extend({
 
   components: {
     Apps,
+    AppsMobile,
+    AppsDesktop,
   },
+  computed: {
+    smallScreen() {
+      return this.$store.state.appBar.isSmallScreen;
+    },
+  }
 });
 </script>

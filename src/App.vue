@@ -4,6 +4,7 @@
     <background />
     -->
     <v-app-bar app color="transparent" flat>
+      <div id="bogsynth-logo" v-if="!smallScreen">BOGSYNTH.COM</div>
       <v-container  class="pa-0">
         <v-row no-gutters justify="space-around">
           <v-col md="6" sm="12">
@@ -52,6 +53,9 @@ export default Vue.extend({
         this.$store.commit(STORE_MUTATIONS.appBar.SET_SEARCH_VALUE, val);
       },
     },
+    smallScreen() {
+      return this.$store.state.appBar.isSmallScreen;
+    },
   },
   mounted() {
     this.width = window.innerWidth * 0.8;
@@ -64,5 +68,9 @@ export default Vue.extend({
 #app {
   overflow: hidden;
   background-color: #222222;
+}
+
+#bogsynth-logo {
+  font-weight: bold;
 }
 </style>
