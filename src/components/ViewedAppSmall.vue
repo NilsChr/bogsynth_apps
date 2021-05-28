@@ -6,12 +6,6 @@
       </v-btn>
       <v-spacer></v-spacer>
     </v-toolbar>
-    <!--
-    <v-card-title>
-        <v
-      {{ viewedApp }}
-    </v-card-title>
-    -->
     <v-container fluid>
         <v-layout id="header">
             <v-flex x3>
