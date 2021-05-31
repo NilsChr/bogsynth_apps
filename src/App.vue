@@ -4,7 +4,7 @@
     <background />
     -->
     <v-app-bar app color="transparent" flat>
-      <div id="bogsynth-logo" v-if="!smallScreen">BOGSYNTH.COM</div>
+      <div id="bogsynth-logo" v-if="!isMobile">BOGSYNTH.COM</div>
 
       <v-container  class="pa-0">
         <v-row no-gutters justify="space-around">
@@ -54,8 +54,8 @@ export default Vue.extend({
         this.$store.commit(STORE_MUTATIONS.appBar.SET_SEARCH_VALUE, val);
       },
     },
-    smallScreen() {
-      return this.$store.state.appBar.isSmallScreen;
+    isMobile() {
+      return this.$store.state.appBar.isMobile;
     },
   },
   mounted() {
