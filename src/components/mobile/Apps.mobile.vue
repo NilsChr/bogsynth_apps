@@ -1,22 +1,30 @@
 <template>
-  <v-layout class="pa-0" justify-center>
-    <div id="grid-container">
-      <div
-        class="grid-item"
-        v-for="app in apps"
-        :key="app.id"
-        @click="setFocusApp(app)"
+  <v-layout class="pa-0" align-start wrap>
+    <v-flex
+      xs2
+      v-for="app in apps"
+      :key="app.id"
+      class="grid-item ma-3 mb-5 mt-5"
+      @click="setFocusApp(app)"
+    >
+      <v-card
+        :img="app.image"
+        width="100%"
+        height="100%"
+        class="grid-item-image"
       >
-        <div class="grid-item__title">{{ app.title }}</div>
-      </div>
-    </div>
+      </v-card>
+
+      <div class="grid-item__title_mobile">{{ app.title }}</div>
+    </v-flex>
+
     <v-dialog
       v-model="viewedApp"
       fullscreen
       transition="dialog-top-transition"
       v-if="viewedApp"
     >
-    <!--
+      <!--
       <viewed-app-small v-if="smallScreen" />
       -->
       <viewed-app-mobile />
@@ -26,24 +34,14 @@
 
 <script>
 import { STORE_MUTATIONS } from "@/store";
-import ViewedAppMobile from './ViewedApp.mobile.vue';
+import ViewedAppMobile from "./ViewedApp.mobile.vue";
+import BOG_APPS from "../../data/bogApps";
 
 export default {
   components: { ViewedAppMobile },
   data() {
     return {
-      apps: [
-        {
-          id: -1,
-          title: "fuml",
-          technologies: [],
-        },
-        {
-          id: -2,
-          title: "troubadour",
-          technologies: [],
-        },
-      ],
+      apps: [],
     };
   },
   methods: {
@@ -65,6 +63,7 @@ export default {
     },
   },
   mounted() {
+    /*
     for (let i = 0; i < 55; i++) {
       this.apps.push({
         id: i,
@@ -72,6 +71,17 @@ export default {
         technologies: [],
       });
     }
+    */
+
+    this.apps = BOG_APPS;
+    /*
+    for (let i = 0; i < 55; i++) {
+      this.apps.push({
+        id: i,
+        title: "troubadour" + i,
+        technologies: [],
+      });
+    }*/
   },
 };
 </script>
@@ -80,28 +90,42 @@ export default {
 #grid-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1em;
+  gap: 1.5em;
   align-items: center;
   justify-content: center;
 }
 
 .grid-item {
-  background: #1e1e1e;
+  /*background: #1e1e1e;*/
   border-radius: 4px;
   box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
     0 1px 5px 0 rgb(0 0 0 / 12%);
   width: 18%;
   margin-bottom: 3vw;
   position: relative;
+  /*border: 1px solid tomato; */
 }
-.grid-item__title {
+
+.grid-item-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-item__title_mobile {
   color: white;
   font-weight: bold;
-  font-size: 1vw;
+  font-size: 1.7vw;
   position: absolute;
-  bottom: 1vw;
+  bottom: -4vw;
   left: 50%;
   transform: translate(-50%, 0%);
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .grid-item:before {

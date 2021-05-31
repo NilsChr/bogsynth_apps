@@ -3,19 +3,16 @@
     <v-container fluid>
       <v-layout id="header" wrap>
         <v-flex xs12>
-          <v-layout justify-center>
+          <v-layout justify-center> 
             <!--
-            <v-img
-              src="https://picsum.photos/1000"
-              height="250"
-              width="250"
-              contain
-              id="desktop--image"
-            >
-            </v-img>
-            -->
             <v-card
               img="https://picsum.photos/1000"
+              height="250"
+              width="250"
+            ></v-card>
+            -->
+             <v-card
+              :img="viewedApp.image"
               height="250"
               width="250"
             ></v-card>
@@ -30,7 +27,11 @@
         </v-flex>
       </v-layout>
       <v-layout class="pt-5 mt-5">
-        <v-btn block small color="primary">Visit app</v-btn>
+        <v-btn block small color="primary" :href="viewedApp.url">Visit app</v-btn>
+      </v-layout>
+      <v-layout class="pt-5 mt-5">
+        
+        {{viewedApp.description}}
       </v-layout>
     </v-container>
   </v-card>
@@ -54,6 +55,10 @@ export default {
 </script>
 
 <style scoped>
+#desktop {
+  position: fixed;
+}
+
 #desktop--image {
   border-radius: 5px;
   overflow: hidden;

@@ -1,77 +1,42 @@
 <template>
-  <v-layout class="pa-0" justify-space-between>
-    <v-flex xs3>
-      <viewed-app-desktop v-if="viewedApp" />
-    </v-flex>
-
-    <v-flex xs6>
-      <v-layout wrap>
-        <v-flex
-          xs3
-          v-for="app in apps"
-          :key="app.id"
-          class="grid-item ma-3 mb-5 mt-5"
-          @click="setFocusApp(app)"
-        >
-          <v-card
-            :img="app.image"
-            width="100%"
-            height="100%"
-            class="grid-item-image"
-            
-          >
-          </v-card>
-
-          <div class="grid-item__title">{{ app.title }}</div>
-        </v-flex>
-      </v-layout>
+  <v-layout class="pa-0" justify-center>
+    <div id="grid-container">
+      <div
+        class="grid-item"
+        v-for="app in apps"
+        :key="app.id"
+        @click="setFocusApp(app)"
+      >
       <!--
-      <div id="grid-container">
-        <div
-          class="grid-item"
-          v-for="app in apps"
-          :key="app.id"
-          @click="setFocusApp(app)"
-        >
-          <div class="grid-item__title">{{ app.title }}</div>
-        </div>
+        <v-img :src="app.image" ></v-img>
+        -->
+        <div class="grid-item__title_mobile">{{ app.title }}</div>
       </div>
-      -->
-    </v-flex>
-    <!--
+    </div>
     <v-dialog
       v-model="viewedApp"
       fullscreen
       transition="dialog-top-transition"
       v-if="viewedApp"
     >
+      <!--
       <viewed-app-small v-if="smallScreen" />
+      -->
+      <viewed-app-mobile />
     </v-dialog>
-    -->
   </v-layout>
 </template>
 
 <script>
 import { STORE_MUTATIONS } from "@/store";
-import ViewedAppDesktop from "./ViewedApp.desktop.vue";
+import ViewedAppMobile from "./ViewedApp.mobile.vue";
 import BOG_APPS from "../../data/bogApps";
 
 export default {
-  components: { ViewedAppDesktop },
+  components: { ViewedAppMobile },
   data() {
     return {
-      apps: [
-        {
-          id: -1,
-          title: "fuml",
-          technologies: [],
-        },
-        {
-          id: -2,
-          title: "troubadour",
-          technologies: [],
-        },
-      ],
+      apps: [],
     };
   },
   methods: {
@@ -93,7 +58,6 @@ export default {
     },
   },
   mounted() {
-    this.apps = BOG_APPS;
     /*
     for (let i = 0; i < 55; i++) {
       this.apps.push({
@@ -103,6 +67,15 @@ export default {
       });
     }
     */
+    
+    this.apps = BOG_APPS;
+ for (let i = 0; i < 7; i++) {
+      this.apps.push({
+        id: i,
+        title: "troubadour" + i,
+        technologies: [],
+      });
+    }
   },
 };
 </script>
@@ -111,30 +84,29 @@ export default {
 #grid-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1em;
+  gap: 1.5em;
   align-items: center;
   justify-content: center;
 }
 
 .grid-item {
-  background: #1e1e1e;
+  /*background: #1e1e1e;*/
   border-radius: 4px;
   box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
     0 1px 5px 0 rgb(0 0 0 / 12%);
-  width: 20%;
-  height: 200px;
+  width: 18%;
   margin-bottom: 3vw;
   position: relative;
+  border: 1px solid tomato;
 }
-.grid-item__title {
+.grid-item__title_mobile {
   color: white;
   font-weight: bold;
-  font-size: 0.7vw;
+  font-size: 2vw;
   position: absolute;
-  bottom: -1.2vw;
+  bottom: -4vw;
   left: 50%;
   transform: translate(-50%, 0%);
-  text-align: center;
 }
 
 .grid-item:before {

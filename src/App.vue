@@ -3,7 +3,7 @@
     <!--
     <background />
     -->
-    <v-app-bar app color="transparent" flat>
+    <v-app-bar app color="#222222" flat>
       <div id="bogsynth-logo" v-if="!isMobile">BOGSYNTH.COM</div>
 
       <v-container  class="pa-0">
