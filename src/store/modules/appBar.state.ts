@@ -1,4 +1,5 @@
 export const appBarMutations = {
+  SET_IS_MOBILE: "SET_IS_MOBILE",
   SET_SMALL_SCREEN: "SET_SMALL_SCREEN",
   SET_SEARCH_VALUE: "SET_SEARCH_VALUE",
   SET_VIEWED_APP: "SET_VIEWED_APP",
@@ -13,6 +14,7 @@ export interface bogsynthApp {
 
 export interface appBarState {
   isSmallScreen: boolean;
+  isMobile: boolean;
   searchValue: string;
   apps: bogsynthApp[];
   viewedApp: bogsynthApp;
@@ -21,11 +23,15 @@ export interface appBarState {
 const appBar = {
   state: {
     isSmallScreen: false,
+    isMobile: false,
     searchValue: "",
     apps: [],
     viewedApp: null as unknown,
   } as appBarState,
   mutations: {
+    SET_IS_MOBILE: (state: appBarState, isMobile: boolean) => {
+      state.isMobile = isMobile;
+    },
     SET_SMALL_SCREEN: (state: appBarState, isSmallScreen: boolean) => {
       state.isSmallScreen = isSmallScreen;
     },

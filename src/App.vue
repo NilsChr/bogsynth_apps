@@ -5,7 +5,6 @@
     -->
     <v-app-bar app color="transparent" flat>
       <div id="bogsynth-logo" v-if="!smallScreen">BOGSYNTH.COM</div>
-      {{width}}
 
       <v-container  class="pa-0">
         <v-row no-gutters justify="space-around">
@@ -60,7 +59,7 @@ export default Vue.extend({
     },
   },
   mounted() {
-    this.width = window.innerWidth;
+    //this.width = window.innerWidth;
     //this.width = window.innerWidth * 0.8;
     //if (this.width > 500) this.width = 500;
     //console.log(this.width);

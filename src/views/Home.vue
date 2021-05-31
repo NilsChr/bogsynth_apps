@@ -1,6 +1,6 @@
 <template>
   <v-container fill-height fluid>
-    <apps-mobile v-if="smallScreen"/>
+    <apps-mobile v-if="isMobile"/>
     <apps-desktop v-else />
   </v-container>
 </template>
@@ -22,6 +22,9 @@ export default Vue.extend({
   computed: {
     smallScreen() {
       return this.$store.state.appBar.isSmallScreen;
+    },
+    isMobile() {
+      return this.$store.state.appBar.isMobile;
     },
   }
 });
