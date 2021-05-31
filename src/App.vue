@@ -6,6 +6,7 @@
     <v-app-bar app color="transparent" flat>
       <div id="bogsynth-logo" v-if="!smallScreen">BOGSYNTH.COM</div>
       {{width}}
+
       <v-container  class="pa-0">
         <v-row no-gutters justify="space-around">
           <v-col md="6" sm="12">
