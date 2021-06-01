@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="pa-0" align-start wrap>
+  <v-layout class="pa-0" align-start wrap justify-space-around>
     <v-flex
       xs2
       v-for="app in apps"
@@ -115,15 +115,15 @@ export default {
 .grid-item__title_mobile {
   color: white;
   font-weight: bold;
-  font-size: 1.7vw;
+  font-size: 2.5vw;
   position: absolute;
-  bottom: -4vw;
+  bottom: -5vw;
   left: 50%;
   transform: translate(-50%, 0%);
 
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 100%;
+  width: 120%;
   white-space: nowrap;
   text-align: center;
 }
