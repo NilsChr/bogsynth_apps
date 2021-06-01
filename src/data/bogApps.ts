@@ -171,7 +171,7 @@ const BOG_APPS = [
     },
     {
         id: 'acaan',
-        title: 'Acaan',
+        title: 'Action RPG Loot',
         url: 'https://www.bogsynth.com/old/arpg/',
         description: 'Action rpg loot testing. Press F to generate loot and I to open inventory',
         image: './apps/arpg.png'
