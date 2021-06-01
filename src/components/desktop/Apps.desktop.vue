@@ -7,7 +7,7 @@
     <v-flex xs6>
       <v-layout wrap>
         <v-flex
-          xs3
+          xs2
           v-for="app in apps"
           :key="app.id"
           class="grid-item ma-5 mb-5 mt-5"
