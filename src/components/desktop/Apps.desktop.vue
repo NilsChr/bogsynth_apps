@@ -1,6 +1,6 @@
 <template>
   <v-layout class="pa-0" justify-space-between>
-    <v-flex xs3>
+    <v-flex xs6>
       <viewed-app-desktop v-if="viewedApp" />
     </v-flex>
 
@@ -10,7 +10,7 @@
           xs3
           v-for="app in apps"
           :key="app.id"
-          class="grid-item ma-3 mb-5 mt-5"
+          class="grid-item ma-5 mb-5 mt-5"
           @click="setFocusApp(app)"
         >
           <v-card
@@ -111,7 +111,7 @@ export default {
 #grid-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1em;
+  gap: 2em;
   align-items: center;
   justify-content: center;
 }
@@ -122,9 +122,10 @@ export default {
   box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
     0 1px 5px 0 rgb(0 0 0 / 12%);
   width: 20%;
-  height: 200px;
+  height: 250px;
   margin-bottom: 3vw;
   position: relative;
+  margin: 50px !important;
 }
 .grid-item__title {
   color: white;
