@@ -2,7 +2,7 @@
   <v-layout class="pa-0" align-start wrap justify-space-around>
     <v-flex
       xs2
-      v-for="app in apps"
+      v-for="app in filteredApps"
       :key="app.id"
       class="grid-item ma-3 mb-5 mt-5"
       @click="setFocusApp(app)"
@@ -61,27 +61,17 @@ export default {
         this.$store.commit(STORE_MUTATIONS.appBar.SET_VIEWED_APP, val);
       },
     },
+    searchValue() {
+      return this.$store.state.appBar.searchValue;
+    },
+    filteredApps() {
+      if(this.searchValue == '') return this.apps;
+
+      return this.apps.filter(a => a.title.toLowerCase().includes(this.searchValue.toLowerCase()));
+    }
   },
   mounted() {
-    /*
-    for (let i = 0; i < 55; i++) {
-      this.apps.push({
-        id: i,
-        title: "troubadour" + i,
-        technologies: [],
-      });
-    }
-    */
-
     this.apps = BOG_APPS;
-    /*
-    for (let i = 0; i < 55; i++) {
-      this.apps.push({
-        id: i,
-        title: "troubadour" + i,
-        technologies: [],
-      });
-    }*/
   },
 };
 </script>

@@ -158,7 +158,7 @@ const BOG_APPS = [
     {
         id: 'runguy2',
         title: 'Run Guy 2',
-        url: 'https://www.bogsynth.com/old/Run Guy 2',
+        url: 'https://www.bogsynth.com/old/RunGuy2',
         description: 'Game for testing swipe motion input',
         image: './apps/runguy2.png'
     },
@@ -170,7 +170,7 @@ const BOG_APPS = [
         image: './apps/acaan.png'
     },
     {
-        id: 'acaan',
+        id: 'arpg',
         title: 'Action RPG Loot',
         url: 'https://www.bogsynth.com/old/arpg/',
         description: 'Action rpg loot testing. Press F to generate loot and I to open inventory',

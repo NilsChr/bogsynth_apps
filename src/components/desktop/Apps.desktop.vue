@@ -8,7 +8,7 @@
       <v-layout wrap>
         <v-flex
           xs2
-          v-for="app in apps"
+          v-for="app in filteredApps"
           :key="app.id"
           class="grid-item ma-5 mb-5 mt-5"
           @click="setFocusApp(app)"
@@ -18,36 +18,18 @@
             width="100%"
             height="100%"
             class="grid-item-image"
-            
           >
           </v-card>
+
+          <!--
+          <v-img :src="app.image" width="100%"
+            height="100%" cover class="grod-item-image"></v-img>
+            -->
 
           <div class="grid-item__title">{{ app.title }}</div>
         </v-flex>
       </v-layout>
-      <!--
-      <div id="grid-container">
-        <div
-          class="grid-item"
-          v-for="app in apps"
-          :key="app.id"
-          @click="setFocusApp(app)"
-        >
-          <div class="grid-item__title">{{ app.title }}</div>
-        </div>
-      </div>
-      -->
     </v-flex>
-    <!--
-    <v-dialog
-      v-model="viewedApp"
-      fullscreen
-      transition="dialog-top-transition"
-      v-if="viewedApp"
-    >
-      <viewed-app-small v-if="smallScreen" />
-    </v-dialog>
-    -->
   </v-layout>
 </template>
 
@@ -91,18 +73,19 @@ export default {
         this.$store.commit(STORE_MUTATIONS.appBar.SET_VIEWED_APP, val);
       },
     },
+    searchValue() {
+      return this.$store.state.appBar.searchValue;
+    },
+    filteredApps() {
+      if (this.searchValue == "") return this.apps;
+
+      return this.apps.filter((a) =>
+        a.title.toLowerCase().includes(this.searchValue.toLowerCase())
+      );
+    },
   },
   mounted() {
     this.apps = BOG_APPS;
-    /*
-    for (let i = 0; i < 55; i++) {
-      this.apps.push({
-        id: i,
-        title: "troubadour" + i,
-        technologies: [],
-      });
-    }
-    */
   },
 };
 </script>
@@ -135,6 +118,12 @@ export default {
   bottom: -1.2vw;
   left: 50%;
   transform: translate(-50%, 0%);
+  text-align: center;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 120%;
+  white-space: nowrap;
   text-align: center;
 }
 
